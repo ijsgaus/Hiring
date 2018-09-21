@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using Hiring.Api.Helpers;
+using Hiring.Api.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -35,7 +37,14 @@ namespace Hiring.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             ConfigureAuth(services);
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "Sample API", Version = "v1"}); });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info {Title = "Sample API", Version = "v1"});
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Hiring.Api.xml");
+                c.IncludeXmlComments(filePath);
+                c.AddSecurityDefinition("bearer", new BearerAuthScheme("/api/token"));
+                c.OperationFilter<SecurityRequirementsOperationFilter>();
+            });
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -56,8 +65,9 @@ namespace Hiring.Api
                 opt.Audience = Configuration.GetSection("TokenAuthentication:Audience").Value;
                 opt.Issuer = Configuration.GetSection("TokenAuthentication:Issuer").Value;
                 opt.SigningCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
-                opt.IdentityResolver = GetIdentity;
             });
+
+            services.AddScoped<IIdentityResolver, FakeIdentityResolver>();
 
             var tokenValidationParameters = new TokenValidationParameters
             {
@@ -105,18 +115,6 @@ namespace Hiring.Api
 
         }
 
-        private Task<ClaimsIdentity> GetIdentity(string username, string password)
-        {
-            // DEMO CODE, DON NOT USE IN PRODUCTION!!!
-            if (username == "TEST" && password == "TEST123")
-            {
-                return Task.FromResult(new ClaimsIdentity(new GenericIdentity(username, "Token"), new Claim[] { }));
-            }
-
-            // Account doesn't exists
-            return Task.FromResult<ClaimsIdentity>(null);
-        }
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -125,7 +123,7 @@ namespace Hiring.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMiddleware<TokenProviderMiddleware>();
+            //app.UseMiddleware<TokenProviderMiddleware>();
             app.UseAuthentication();
             app.UseMvc();
             app.UseSwagger();

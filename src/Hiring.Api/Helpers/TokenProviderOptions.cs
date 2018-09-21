@@ -34,9 +34,32 @@ namespace Hiring.Api.Helpers
         /// </summary>
         public SigningCredentials SigningCredentials { get; set; }
 
-        /// <summary>
-        /// Resolves a user identity given a username and password.
-        /// </summary>
-        public Func<string, string, Task<ClaimsIdentity>> IdentityResolver { get; set; }
+        public static void ThrowIfNotConfigured(TokenProviderOptions options)
+        {
+            if (string.IsNullOrEmpty(options.Path))
+            {
+                throw new ArgumentNullException(nameof(TokenProviderOptions.Path));
+            }
+
+            if (string.IsNullOrEmpty(options.Issuer))
+            {
+                throw new ArgumentNullException(nameof(TokenProviderOptions.Issuer));
+            }
+
+            if (string.IsNullOrEmpty(options.Audience))
+            {
+                throw new ArgumentNullException(nameof(TokenProviderOptions.Audience));
+            }
+
+            if (options.Expiration <= TimeSpan.Zero)
+            {
+                throw new ArgumentException("Must be a non-zero TimeSpan.", nameof(TokenProviderOptions.Expiration));
+            }
+
+            if (options.SigningCredentials == null)
+            {
+                throw new ArgumentNullException(nameof(TokenProviderOptions.SigningCredentials));
+            }
+        }
     }
 }

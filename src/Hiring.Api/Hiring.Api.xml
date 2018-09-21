@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hiring.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Hiring.Api.Controllers.TokenController.Post(Hiring.Api.Controllers.TokenController.TokenRequest)">
+            <summary>
+            Request bearer token
+            </summary>
+            <param name="request">request parameters</param>
+            <returns>bearer token description</returns>
+        </member>
+        <member name="T:Hiring.Api.Controllers.TokenController.TokenResponse">
+            <summary>
+            Response when success login
+            </summary>
+        </member>
+        <member name="P:Hiring.Api.Controllers.TokenController.TokenResponse.Token">
+            <summary>
+            Bearer token
+            </summary>
+        </member>
+        <member name="P:Hiring.Api.Controllers.TokenController.TokenResponse.Expired">
+            <summary>
+            Expired in second
+            </summary>
+        </member>
+        <member name="T:Hiring.Api.Controllers.TokenController.TokenRequest">
+            <summary>
+            Request for token
+            </summary>
+        </member>
+        <member name="P:Hiring.Api.Controllers.TokenController.TokenRequest.UserName">
+            <summary>
+            User name
+            </summary>
+        </member>
+        <member name="P:Hiring.Api.Controllers.TokenController.TokenRequest.Password">
+            <summary>
+            User password
+            </summary>
+        </member>
+        <member name="P:Hiring.Api.Helpers.TokenProviderOptions.Path">
+            <summary>
+            The relative request path to listen on.
+            </summary>
+            <remarks>The default path is <c>/token</c>.</remarks>
+        </member>
+        <member name="P:Hiring.Api.Helpers.TokenProviderOptions.Issuer">
+            <summary>
+             The Issuer (iss) claim for generated tokens.
+            </summary>
+        </member>
+        <member name="P:Hiring.Api.Helpers.TokenProviderOptions.Audience">
+            <summary>
+            The Audience (aud) claim for the generated tokens.
+            </summary>
+        </member>
+        <member name="P:Hiring.Api.Helpers.TokenProviderOptions.Expiration">
+            <summary>
+            The expiration time for the generated tokens.
+            </summary>
+            <remarks>The default is five minutes (300 seconds).</remarks>
+        </member>
+        <member name="P:Hiring.Api.Helpers.TokenProviderOptions.SigningCredentials">
+            <summary>
+            The signing key to use when generating tokens.
+            </summary>
+        </member>
+        <member name="T:Hiring.Api.Services.IIdentityResolver">
+            <summary>
+            Resolve user name and password to <see cref="T:System.Security.Claims.ClaimsIdentity"/>
+            </summary>
+        </member>
+        <member name="M:Hiring.Api.Services.IIdentityResolver.Resolve(System.String,System.String)">
+            <summary>
+            Resolve user name and password to <see cref="T:System.Security.Claims.ClaimsIdentity"/> or null
+            </summary>
+            <param name="userName">user name</param>
+            <param name="password">password</param>
+            <returns>identity or null</returns>
+        </member>
+    </members>
+</doc>
