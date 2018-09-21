@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2CA14422-1D4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiring.Api", "src\Hiring.Api\Hiring.Api.csproj", "{0A1B8272-BF3F-458D-87E0-2DAEA94E4F33}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "migrations", "migrations", "{AF0BB019-6A66-461D-A6E4-E474F8E920DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiring.Migrations", "migrations\Hiring.Migrations\Hiring.Migrations.csproj", "{757462C5-C3B5-45A5-B2C9-3CFA156915EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,9 +21,16 @@ Global
 		{0A1B8272-BF3F-458D-87E0-2DAEA94E4F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A1B8272-BF3F-458D-87E0-2DAEA94E4F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A1B8272-BF3F-458D-87E0-2DAEA94E4F33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{757462C5-C3B5-45A5-B2C9-3CFA156915EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{757462C5-C3B5-45A5-B2C9-3CFA156915EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{757462C5-C3B5-45A5-B2C9-3CFA156915EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{757462C5-C3B5-45A5-B2C9-3CFA156915EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{757462C5-C3B5-45A5-B2C9-3CFA156915EF} = {AF0BB019-6A66-461D-A6E4-E474F8E920DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5EEBA19C-AD4C-4C6B-9720-41973ECB401F}
