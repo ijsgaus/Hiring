@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
@@ -32,6 +34,7 @@ namespace Hiring.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            ConfigureAuth(services);
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "Sample API", Version = "v1"}); });
         }
 
@@ -45,8 +48,20 @@ namespace Hiring.Api
                 new SymmetricSecurityKey(
                     Encoding.ASCII.GetBytes(Configuration.GetSection("TokenAuthentication:SecretKey").Value));
 
+            
+
+            services.Configure<TokenProviderOptions>(opt =>
+            {
+                opt.Path = Configuration.GetSection("TokenAuthentication:TokenPath").Value;
+                opt.Audience = Configuration.GetSection("TokenAuthentication:Audience").Value;
+                opt.Issuer = Configuration.GetSection("TokenAuthentication:Issuer").Value;
+                opt.SigningCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+                opt.IdentityResolver = GetIdentity;
+            });
+
             var tokenValidationParameters = new TokenValidationParameters
             {
+                
                 // The signing key must match!
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = signingKey,
@@ -73,18 +88,33 @@ namespace Hiring.Api
                     {
                         OnTokenValidated = ctx => Task.CompletedTask
                     };
-                });
-            services
-                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                })
                 .AddCookie(opt =>
                 {
                     opt.Cookie.Name = Configuration.GetSection("TokenAuthentication:CookieName").Value;
                     opt.TicketDataFormat = new CustomJwtDataFormat(
                         SecurityAlgorithms.HmacSha256,
                         tokenValidationParameters);
+                    opt.Events = new CookieAuthenticationEvents
+                    {
+                        
+                    };
                     
                 });
 
+
+        }
+
+        private Task<ClaimsIdentity> GetIdentity(string username, string password)
+        {
+            // DEMO CODE, DON NOT USE IN PRODUCTION!!!
+            if (username == "TEST" && password == "TEST123")
+            {
+                return Task.FromResult(new ClaimsIdentity(new GenericIdentity(username, "Token"), new Claim[] { }));
+            }
+
+            // Account doesn't exists
+            return Task.FromResult<ClaimsIdentity>(null);
         }
 
 
@@ -95,7 +125,8 @@ namespace Hiring.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseMiddleware<TokenProviderMiddleware>();
+            app.UseAuthentication();
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sample API"));
