@@ -2,13 +2,16 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using ITHiring.Api.Helpers;
+using ITHiring.Api.Authorization;
 using ITHiring.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
 namespace ITHiring.Api.Controllers
 {
+    /// <summary>
+    /// Authorize by bearer token controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class TokenController : ControllerBase
@@ -16,6 +19,11 @@ namespace ITHiring.Api.Controllers
         private readonly IIdentityResolver _resolver;
         private readonly TokenProviderOptions _options;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="options">options for JWT token construction</param>
+        /// <param name="resolver">resolve identity service</param>
         public TokenController(IOptions<TokenProviderOptions> options, IIdentityResolver resolver)
         {
             if (options == null) throw new ArgumentNullException(nameof(options));

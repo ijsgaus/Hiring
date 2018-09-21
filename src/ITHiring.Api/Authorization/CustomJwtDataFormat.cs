@@ -4,9 +4,9 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ITHiring.Api.Helpers
+namespace ITHiring.Api.Authorization
 {
-    public class CustomJwtDataFormat : ISecureDataFormat<AuthenticationTicket>
+    internal class CustomJwtDataFormat : ISecureDataFormat<AuthenticationTicket>
     {
         private readonly string algorithm;
         private readonly TokenValidationParameters validationParameters;

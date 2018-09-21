@@ -4,6 +4,56 @@
         <name>ITHiring.Api</name>
     </assembly>
     <members>
+        <member name="T:ITHiring.Api.Authorization.TokenProviderOptions">
+            <summary>
+            Token provider options
+            </summary>
+        </member>
+        <member name="P:ITHiring.Api.Authorization.TokenProviderOptions.Path">
+            <summary>
+            The relative request path to listen on.
+            </summary>
+            <remarks>The default path is <c>/token</c>.</remarks>
+        </member>
+        <member name="P:ITHiring.Api.Authorization.TokenProviderOptions.Issuer">
+            <summary>
+             The Issuer (iss) claim for generated tokens.
+            </summary>
+        </member>
+        <member name="P:ITHiring.Api.Authorization.TokenProviderOptions.Audience">
+            <summary>
+            The Audience (aud) claim for the generated tokens.
+            </summary>
+        </member>
+        <member name="P:ITHiring.Api.Authorization.TokenProviderOptions.Expiration">
+            <summary>
+            The expiration time for the generated tokens.
+            </summary>
+            <remarks>The default is five minutes (300 seconds).</remarks>
+        </member>
+        <member name="P:ITHiring.Api.Authorization.TokenProviderOptions.SigningCredentials">
+            <summary>
+            The signing key to use when generating tokens.
+            </summary>
+        </member>
+        <member name="M:ITHiring.Api.Authorization.TokenProviderOptions.ThrowIfNotConfigured(ITHiring.Api.Authorization.TokenProviderOptions)">
+            <summary>
+            Validate options or throw
+            </summary>
+            <param name="options">options</param>
+        </member>
+        <member name="T:ITHiring.Api.Controllers.TokenController">
+            <summary>
+            Authorize by bearer token controller
+            </summary>
+        </member>
+        <member name="M:ITHiring.Api.Controllers.TokenController.#ctor(Microsoft.Extensions.Options.IOptions{ITHiring.Api.Authorization.TokenProviderOptions},ITHiring.Api.Services.IIdentityResolver)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="options">options for JWT token construction</param>
+            <param name="resolver">resolve identity service</param>
+        </member>
         <member name="M:ITHiring.Api.Controllers.TokenController.Post(ITHiring.Api.Controllers.TokenController.TokenRequest)">
             <summary>
             Request bearer token
@@ -39,33 +89,6 @@
         <member name="P:ITHiring.Api.Controllers.TokenController.TokenRequest.Password">
             <summary>
             User password
-            </summary>
-        </member>
-        <member name="P:ITHiring.Api.Helpers.TokenProviderOptions.Path">
-            <summary>
-            The relative request path to listen on.
-            </summary>
-            <remarks>The default path is <c>/token</c>.</remarks>
-        </member>
-        <member name="P:ITHiring.Api.Helpers.TokenProviderOptions.Issuer">
-            <summary>
-             The Issuer (iss) claim for generated tokens.
-            </summary>
-        </member>
-        <member name="P:ITHiring.Api.Helpers.TokenProviderOptions.Audience">
-            <summary>
-            The Audience (aud) claim for the generated tokens.
-            </summary>
-        </member>
-        <member name="P:ITHiring.Api.Helpers.TokenProviderOptions.Expiration">
-            <summary>
-            The expiration time for the generated tokens.
-            </summary>
-            <remarks>The default is five minutes (300 seconds).</remarks>
-        </member>
-        <member name="P:ITHiring.Api.Helpers.TokenProviderOptions.SigningCredentials">
-            <summary>
-            The signing key to use when generating tokens.
             </summary>
         </member>
         <member name="T:ITHiring.Api.Services.IIdentityResolver">

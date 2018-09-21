@@ -1,8 +1,11 @@
 ﻿using System;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ITHiring.Api.Helpers
+namespace ITHiring.Api.Authorization
 {
+    /// <summary>
+    /// Token provider options
+    /// </summary>
     public class TokenProviderOptions
     {
         /// <summary>
@@ -32,6 +35,10 @@ namespace ITHiring.Api.Helpers
         /// </summary>
         public SigningCredentials SigningCredentials { get; set; }
 
+        /// <summary>
+        /// Validate options or throw
+        /// </summary>
+        /// <param name="options">options</param>
         public static void ThrowIfNotConfigured(TokenProviderOptions options)
         {
             if (string.IsNullOrEmpty(options.Path))
