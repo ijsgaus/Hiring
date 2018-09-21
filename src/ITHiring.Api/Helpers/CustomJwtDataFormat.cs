@@ -4,7 +4,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Hiring.Api.Helpers
+namespace ITHiring.Api.Helpers
 {
     public class CustomJwtDataFormat : ISecureDataFormat<AuthenticationTicket>
     {

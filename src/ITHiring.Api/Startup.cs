@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
-using Hiring.Api.Helpers;
-using Hiring.Api.Services;
+using ITHiring.Api.Helpers;
+using ITHiring.Api.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -16,12 +12,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Hiring.Api
+namespace ITHiring.Api
 {
     public class Startup
     {

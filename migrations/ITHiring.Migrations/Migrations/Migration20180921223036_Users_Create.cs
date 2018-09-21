@@ -1,8 +1,6 @@
-﻿using System;
-using System.Data;
-using FluentMigrator;
+﻿using FluentMigrator;
 
-namespace Hiring.Migrations.Migrations
+namespace ITHiring.Migrations.Migrations
 {
     [Migration(20180921223036)]
     // ReSharper disable once InconsistentNaming

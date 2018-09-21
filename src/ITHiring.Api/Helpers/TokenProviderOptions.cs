@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Hiring.Api.Helpers
+namespace ITHiring.Api.Helpers
 {
     public class TokenProviderOptions
     {

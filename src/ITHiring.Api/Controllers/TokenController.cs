@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Security.Principal;
 using System.Threading.Tasks;
-using Hiring.Api.Helpers;
-using Hiring.Api.Services;
-using Microsoft.AspNetCore.Http;
+using ITHiring.Api.Helpers;
+using ITHiring.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace Hiring.Api.Controllers
+namespace ITHiring.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

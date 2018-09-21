@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Hiring.Api.Services
+namespace ITHiring.Api.Services
 {
     /// <summary>
     /// Resolve user name and password to <see cref="ClaimsIdentity"/>

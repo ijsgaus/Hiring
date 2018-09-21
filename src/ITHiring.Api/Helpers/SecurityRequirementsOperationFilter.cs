@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Hiring.Api.Helpers
+namespace ITHiring.Api.Helpers
 {
     internal class SecurityRequirementsOperationFilter : IOperationFilter
     {

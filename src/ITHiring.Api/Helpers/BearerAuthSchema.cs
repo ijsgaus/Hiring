@@ -1,6 +1,6 @@
 ﻿using Swashbuckle.AspNetCore.Swagger;
 
-namespace Hiring.Api.Helpers
+namespace ITHiring.Api.Helpers
 {
     internal class BearerAuthScheme : SecurityScheme
     {

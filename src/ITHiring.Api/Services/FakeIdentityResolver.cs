@@ -2,7 +2,7 @@
 using System.Security.Principal;
 using System.Threading.Tasks;
 
-namespace Hiring.Api.Services
+namespace ITHiring.Api.Services
 {
     internal class FakeIdentityResolver : IIdentityResolver
     {

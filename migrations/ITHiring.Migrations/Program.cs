@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Npgsql;
 
-namespace Hiring.Migrations
+namespace ITHiring.Migrations
 {
     class Program
     {
