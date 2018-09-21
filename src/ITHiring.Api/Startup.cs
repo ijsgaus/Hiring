@@ -39,8 +39,8 @@ namespace Hiring.Api
             ConfigureAuth(services);
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info {Title = "Sample API", Version = "v1"});
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Hiring.Api.xml");
+                c.SwaggerDoc("v1", new Info {Title = "ITHiring API", Version = "v1"});
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "ITHiring.Api.xml");
                 c.IncludeXmlComments(filePath);
                 c.AddSecurityDefinition("bearer", new BearerAuthScheme("/api/token"));
                 c.OperationFilter<SecurityRequirementsOperationFilter>();

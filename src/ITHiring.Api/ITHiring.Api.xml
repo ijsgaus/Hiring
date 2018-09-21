@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Hiring.Api</name>
+        <name>ITHiring.Api</name>
     </assembly>
     <members>
         <member name="M:Hiring.Api.Controllers.TokenController.Post(Hiring.Api.Controllers.TokenController.TokenRequest)">

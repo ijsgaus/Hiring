@@ -12,7 +12,7 @@
 
   
   <PropertyGroup>
-    <DocumentationFile>$(MSBuildThisFileDirectory)\Hiring.Api.xml</DocumentationFile>
+    <DocumentationFile>$(MSBuildThisFileDirectory)\ITHiring.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,8 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Hiring.Api.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Update="ITHiring.Api.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

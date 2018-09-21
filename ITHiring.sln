@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2CA14422-1D41-46A5-B759-50472E68D3B8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiring.Api", "src\Hiring.Api\Hiring.Api.csproj", "{0A1B8272-BF3F-458D-87E0-2DAEA94E4F33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITHiring.Api", "src\ITHiring.Api\ITHiring.Api.csproj", "{0A1B8272-BF3F-458D-87E0-2DAEA94E4F33}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "migrations", "migrations", "{AF0BB019-6A66-461D-A6E4-E474F8E920DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiring.Migrations", "migrations\Hiring.Migrations\Hiring.Migrations.csproj", "{757462C5-C3B5-45A5-B2C9-3CFA156915EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITHiring.Migrations", "migrations\ITHiring.Migrations\ITHiring.Migrations.csproj", "{757462C5-C3B5-45A5-B2C9-3CFA156915EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
